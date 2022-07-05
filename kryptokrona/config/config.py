@@ -1,3 +1,6 @@
+from kryptokrona.config.mixin_limit import MixinLimit
+
+
 class Config:
     """Config definition."""
 
@@ -15,6 +18,12 @@ class Config:
     fee_per_byte_chunk_size = 256
     minimum_fee_per_byte = 500.00 / fee_per_byte_chunk_size
 
+    mixin_limits = [
+        MixinLimit(440000, 0, 100, 3),
+        MixinLimit(620000, 7),
+        MixinLimit(800000, 3),
+    ]
+
     standard_address_length = 99
     integrated_address_length = 99 + ((64 * 11) / 8)
 
@@ -27,5 +36,3 @@ class Config:
     custom_user_agent_string = '%s-sdk-%s'.format(ticker, '1.0.0')
     custom_request_options = {}
 
-    def __init__(self):
-        pass
